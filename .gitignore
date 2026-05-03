@@ -1,0 +1,28 @@
+# API anahtarları - kesinlikle GitHub'a gitmesin
+.env
+
+# Python sanal ortam
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Jupyter checkpoint'leri
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# VS Code ayarları
+.vscode/
+
+# İşletim sistemi dosyaları
+.DS_Store
+Thumbs.db
+
+# Sonuç dosyaları (büyük olabilir, isteğe bağlı)
+# results/*.csv
