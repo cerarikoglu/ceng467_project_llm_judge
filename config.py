@@ -4,20 +4,18 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # API Configuration
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # Model Configuration
-JUDGE_MODEL_OPENAI = "gpt-4o"
-JUDGE_MODEL_ANTHROPIC = "claude-3-5-sonnet-20241022"
-BASELINE_MODEL = "gpt-3.5-turbo"
+JUDGE_MODEL = "gemini-1.5-pro"
+BASELINE_MODEL = "gemini-1.5-flash"   # Daha ucuz/hızlı, baseline için
 MAX_TOKENS = 512
-TEMPERATURE = 0.0          # Deterministik sonuç için 0
+TEMPERATURE = 0.0
 
 # Dataset Configuration
-DATASET_NAME = "wmt19"
+DATASET_NAME = "wmt14"
 LANGUAGE_PAIR = "de-en"
-SAMPLE_SIZE = 200          # Test için 200 örnek yeterli
+SAMPLE_SIZE = 200
 
 # Evaluation Configuration
 METRICS = ["bleu", "rouge", "bertscore"]
