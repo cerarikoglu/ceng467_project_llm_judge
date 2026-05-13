@@ -13,7 +13,7 @@ MAX_TOKENS = 512
 TEMPERATURE = 0.0
 
 # Dataset Configuration
-DATASET_NAME = "wmt14"
+DATASET_NAME = "wmt19"
 LANGUAGE_PAIR = "de-en"
 SAMPLE_SIZE = 200
 
