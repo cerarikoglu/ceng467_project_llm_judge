@@ -4,11 +4,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # API Configuration
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 # Model Configuration
-JUDGE_MODEL = "gemini-1.5-pro"
-BASELINE_MODEL = "gemini-1.5-flash"   # Daha ucuz/hızlı, baseline için
+JUDGE_MODEL = "llama-3.3-70b-versatile"    # Ana sistem
+BASELINE_MODEL = "llama-3.1-8b-instant"    # Baseline (kucuk/hizli model)
 MAX_TOKENS = 512
 TEMPERATURE = 0.0
 

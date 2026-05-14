@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 ## API Keys
 Create a `.env` file in the root:
-GEMINI_API_KEY=your_key_here
+GROQ_API_KEY=your_key_here
 
 ## Reproduce Results
 ```bash
