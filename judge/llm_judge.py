@@ -44,7 +44,7 @@ def run_llm_judge(df, prompt_type="zero_shot", use_baseline=False, max_samples=5
         try:
             score, raw_response = judge_single(
                 row["source"],
-                row["reference"],
+                row["hypothesis"],
                 row["reference"],
                 prompt_type,
                 use_baseline,
@@ -52,6 +52,7 @@ def run_llm_judge(df, prompt_type="zero_shot", use_baseline=False, max_samples=5
             results.append({
                 "id": i,
                 "source": row["source"],
+                "hypothesis": row["hypothesis"],
                 "reference": row["reference"],
                 "prompt_type": prompt_type,
                 "model": BASELINE_MODEL if use_baseline else JUDGE_MODEL,
@@ -59,7 +60,7 @@ def run_llm_judge(df, prompt_type="zero_shot", use_baseline=False, max_samples=5
                 "raw_response": raw_response,
             })
             if (i + 1) % 10 == 0:
-                print(f"  {i+1}/{max_samples} tamamlandı...")
+                print(f"  {i+1}/{max_samples} completed...")
             time.sleep(0.5)
         except Exception as e:
             print(f" errored example {i}: {e}")
@@ -76,16 +77,16 @@ def run_llm_judge(df, prompt_type="zero_shot", use_baseline=False, max_samples=5
 
 
 if __name__ == "__main__":
-    df = pd.read_csv("results/wmt_samples.csv")
+    df = pd.read_csv("results/wmt_samples_with_hypotheses.csv")
     
     # Baseline: Llama 8B, zero-shot
-    run_llm_judge(df, prompt_type="zero_shot", use_baseline=True, max_samples=50)
+    run_llm_judge(df, prompt_type="zero_shot", use_baseline=True, max_samples=100)
     
     # Judge: Llama 70B, zero-shot
-    run_llm_judge(df, prompt_type="zero_shot", use_baseline=False, max_samples=50)
+    run_llm_judge(df, prompt_type="zero_shot", use_baseline=False, max_samples=100)
     
     # Judge: Llama 70B, few-shot
-    run_llm_judge(df, prompt_type="few_shot", use_baseline=False, max_samples=50)
+    run_llm_judge(df, prompt_type="few_shot", use_baseline=False, max_samples=100)
     
     # Judge: Llama 70B, chain-of-thought
-    run_llm_judge(df, prompt_type="chain_of_thought", use_baseline=False, max_samples=50)
+    run_llm_judge(df, prompt_type="chain_of_thought", use_baseline=False, max_samples=100)
